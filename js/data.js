@@ -20,6 +20,7 @@ title.innerHTML = "Resultaat";
 
 keysSorted = Object.keys(results).sort(function(a,b){return results[a]-results[b]});
 
+
 showResults();
 
 for (i = 0; i < 20; i++) { 

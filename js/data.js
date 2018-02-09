@@ -6,7 +6,7 @@ var title = document.getElementById('title');
 var next = document.getElementById('skip');
 var back = document.getElementById('back');
 
-console.dir(title);
+//console.dir(title);
 choices = []
 
 title.innerHTML = subjects[nr].title;
@@ -15,20 +15,27 @@ statement.innerHTML = subjects[nr].statement;
 
 
 var resultaat = function(event){
-resultaat = "";
-title.innerHTML = "Resultaat";
+	resultaat = "";
+	title.innerHTML = "Resultaat";
 
-keysSorted = Object.keys(results).sort(function(a,b){return results[a]-results[b]});
+	console.log(results);
+
+	function compare(a,b) {
+	  return b.pt - a.pt;
+	}
+
+	
 
 
-showResults();
+	showResults();
 
-for (i = 0; i < 20; i++) { 
-    resultaat += results[i].name + " : " + results[i].pt + "<br>";
-}
+	keysSorted = results.sort(compare);
+	console.log(keysSorted);
+
+	for (i = 0; i < 20; i++) { 
+	    resultaat += results[i].name + " : " + results[i].pt + "<br>";
+	}
 	statement.innerHTML = resultaat;
-
-
 }
 
 
@@ -38,7 +45,7 @@ var next = function(event){
 	title.innerHTML = subjects[nr].title;
 	statement.innerHTML = subjects[nr].statement;
 	parties.innerHTML = subjects[nr].parties;
-	console.log(choices,nr)
+	//console.log(choices,nr)
 }
 
 var prev = function(event){
@@ -47,7 +54,7 @@ var prev = function(event){
 	title.innerHTML = subjects[nr].title;
 	statement.innerHTML = subjects[nr].statement;
 	parties.innerHTML = subjects[nr].parties;
-	console.log(choices,nr)
+	//console.log(choices,nr)
 }
 var eens = function(event){
 	//saveChoice("pro");
@@ -58,7 +65,7 @@ var eens = function(event){
 	title.innerHTML = subjects[nr].title;
 	statement.innerHTML = subjects[nr].statement;
 	parties.innerHTML = subjects[nr].parties;
-	console.log(choices,nr)
+	//console.log(choices,nr)
 }
 var even = function(event){
 	//saveChoice("ambivalent");
@@ -68,7 +75,7 @@ var even = function(event){
 	title.innerHTML = subjects[nr].title;
 	statement.innerHTML = subjects[nr].statement;
 	parties.innerHTML = subjects[nr].parties;
-	console.log(choices,nr)
+	//console.log(choices,nr)
 }
 
 var oneens = function(event){
@@ -79,7 +86,7 @@ var oneens = function(event){
 	title.innerHTML = subjects[nr].title;
 	statement.innerHTML = subjects[nr].statement;
 	parties.innerHTML = subjects[nr].parties;
-	console.log(choices,nr)
+	//console.log(choices,nr)
 
 }
 resultaat1.onclick = resultaat;
@@ -89,11 +96,11 @@ weleens.onclick = eens;
 gelijk_aan.onclick = even;
 nieteens.onclick = oneens;
 var nr = Math.min(Math.max(parseInt(nr), 0), 30);
-console.log(nr)
+//console.log(nr)
 
 
 var groupname = subjects[nr].parties[pr].position;
-console.log(groupname)
+//console.log(groupname)
 
 // function match(position) {}{
 // 	 name:vvd;
@@ -206,19 +213,19 @@ function showResults() {
 
 	choices.forEach(function(choice, index) {
 
-		console.log(subjects[index]);
+		//console.log(subjects[index]);
 	
 		subjects[index].parties.forEach(function(party, index) {
 
 			results.forEach(function(result) {
 
 				if (party.name == result.name) {
-					console.log(party);
-					console.log(party.position);
+					//console.log(party);
+					//console.log(party.position);
 
 					if (party.position == choice) {
-						console.log(party.position);
-						console.log(choice);
+						//console.log(party.position);
+						//console.log(choice);
 						result.pt++;
 					}
 				}
@@ -226,20 +233,20 @@ function showResults() {
 		});
 	});
 
-	console.log(results);
+	//console.log(results);
 }
 
 
 
 subjects[nr].parties.forEach(function saveChoice(partij) {
 	
-	console.log(partij.name)
- 	console.log(partij.position);
+	//console.log(partij.name)
+ 	//console.log(partij.position);
  	return partij.position;
 });
 
 function logArrayElements(element, index, array) {
-  console.log('a[' + index + '] = ' + element);
+  //console.log('a[' + index + '] = ' + element);
 }
 /*// Notice that index 2 is skipped since there is no item at
 // that position in the array.
@@ -264,8 +271,8 @@ if (~ matches.indexOf(subjects[nr].parties.position))*/
 
 // function Add_eens(){
 //  nr = 0 ; nr < 3 ; nr++;
-//  	console.log(subjects[nr].title);
-//  	console.log(subjects[nr].statement);
+////  	console.log(subjects[nr].title);
+////  	console.log(subjects[nr].statement);
 // document.getElementById('title').innerHTML= subjects[nr].title;
 // document.getElementById('statement').innerHTML= subjects[nr].statement;
 // }
@@ -274,8 +281,8 @@ if (~ matches.indexOf(subjects[nr].parties.position))*/
 
 
 // for  (i=0; i < 3; i++){
-// 	console.log(subjects[i].title);
-// 	console.log(subjects[i].statement);
+//// 	console.log(subjects[i].title);
+//// 	console.log(subjects[i].statement);
 // document.getElementById('title').innerHTML= subjects[i].title;
 // document.getElementById('statement').innerHTML= subjects[i].statement;
 // }
